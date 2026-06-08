@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { personalInfo } from "@/data/portfolio";
 
 // Extract just the username from the github URL, e.g. "Prashikdev2315"
@@ -9,7 +9,7 @@ const GITHUB_USERNAME = personalInfo.github.replace("https://github.com/", "").r
 // ghchart.rshah.org returns a live contribution SVG — auto-updates daily, no token needed
 const CHART_URL = `https://ghchart.rshah.org/${GITHUB_USERNAME}`;
 
-const headingVariants = {
+const headingVariants: Variants = {
   hidden:  { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
