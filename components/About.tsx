@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { GraduationCap, MapPin, Briefcase, Target, Languages } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
+import GPATrendGraph from "@/components/GPATrendGraph";
 
 const ICONS: Record<string, React.ReactNode> = {
   GraduationCap: <GraduationCap size={16} color="var(--accent)" />,
@@ -145,6 +146,9 @@ export default function About() {
           ))}
         </motion.div>
       </div>
+
+      {/* GPA Trend Graph */}
+      <GPATrendGraph />
 
       <style>{`
         @media (max-width: 767px) {
