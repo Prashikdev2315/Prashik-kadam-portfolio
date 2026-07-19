@@ -10,7 +10,7 @@ export const personalInfo = {
   email: "kadamprashik23@gmail.com",
   github: "https://github.com/Prashikdev2315",
   linkedin: "https://linkedin.com/in/prashik-kadam",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Prashik. 23BCS115.pdf",
   photo: "/photo.jpg",
   taglines: [
     "From raw sensor data to farmer decisions.",
@@ -124,6 +124,31 @@ export const skillGroups: SkillGroup[] = [
     category: "Data & Analysis",
     skills: ["Pandas", "NumPy", "Matplotlib", "RDKit"],
     highlight: [],
+  },
+];
+
+export interface Experience {
+  role: string;
+  org: string;
+  orgFull: string;
+  period: string;
+  bullets: string[];
+  githubLabel?: string;
+  githubUrl?: string;
+}
+
+export const experiences: Experience[] = [
+  {
+    role: "Software Engineering Intern",
+    org: "IIT Ropar — VLED Lab",
+    orgFull: "Indian Institute of Technology Ropar, Vicharanashala Lab for Education Design (VLED Lab)",
+    period: "May 2026 – July 2026",
+    bullets: [
+      "Contributed to Spurti, an open-source ed-tech platform, using the MERN Stack",
+      "Submitted pull requests for React frontend feature development on a live production codebase",
+    ],
+    githubLabel: "GitHub",
+    githubUrl: "https://github.com/Prashikdev2315/spurti",
   },
 ];
 

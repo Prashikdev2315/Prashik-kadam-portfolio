@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Home",           href: "#hero" },
   { label: "About",          href: "#about" },
   { label: "Skills",         href: "#skills" },
+  { label: "Experience",     href: "#experience" },
   { label: "Projects",       href: "#projects" },
   { label: "Certifications", href: "#certifications" },
 ];
@@ -32,7 +33,7 @@ export default function Navbar() {
 
   // IntersectionObserver for active section detection
   useEffect(() => {
-    const sectionIds = ["hero", "about", "skills", "projects", "certifications", "contact"];
+    const sectionIds = ["hero", "about", "skills", "experience", "projects", "certifications", "contact"];
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
