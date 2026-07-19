@@ -259,6 +259,7 @@ export default function Contact() {
                       onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((p) => ({ ...p, email: undefined })); }}
                       placeholder="your@email.com"
                       disabled={isDisabled}
+                      suppressHydrationWarning
                       style={{
                         ...inputStyle,
                         borderBottomColor: errors.email ? "#E24B4A" : "rgba(255,255,255,0.1)",

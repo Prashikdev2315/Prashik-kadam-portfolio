@@ -293,6 +293,7 @@ export default function Hero() {
                 alt="Prashik Kadam"
                 fill
                 priority
+                quality={80}
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 640px) 240px, 340px"
               />
@@ -321,18 +322,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <style>{`
-        @media (max-width: 767px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            text-align: center;
-            justify-items: center;
-          }
-          .hero-grid > div:last-child {
-            order: -1;
-          }
-        }
-      `}</style>
     </section>
   );
 }

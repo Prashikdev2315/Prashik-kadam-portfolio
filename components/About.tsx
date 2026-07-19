@@ -150,13 +150,6 @@ export default function About() {
       {/* GPA Trend Graph */}
       <GPATrendGraph />
 
-      <style>{`
-        @media (max-width: 767px) {
-          .about-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

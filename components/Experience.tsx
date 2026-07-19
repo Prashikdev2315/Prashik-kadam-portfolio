@@ -24,7 +24,46 @@ const bulletVariants: Variants = {
   }),
 };
 
-const TECH_TAGS = ["MERN Stack", "React", "Node.js", "MongoDB", "Open Source"];
+// ─── Highlight config ────────────────────────────────────────────────────────
+const BULLET_HIGHLIGHTS: Array<{ phrase: string; color: string }> = [
+  { phrase: "Spurti",     color: "#F0F4FF" },
+  { phrase: "MERN Stack", color: "#4F8EF7" },
+  { phrase: "React",      color: "#4F8EF7" },
+];
+
+// Safely renders text with specific phrases bolded — no dangerouslySetInnerHTML
+function BulletText({ text }: { text: string }) {
+  type Part = { text: string; color?: string };
+  let parts: Part[] = [{ text }];
+
+  for (const { phrase, color } of BULLET_HIGHLIGHTS) {
+    parts = parts.flatMap((part) => {
+      if (part.color !== undefined) return [part];
+      const segments = part.text.split(phrase);
+      if (segments.length === 1) return [part];
+      return segments.flatMap<Part>((seg, i) => {
+        const out: Part[] = [];
+        if (seg) out.push({ text: seg });
+        if (i < segments.length - 1) out.push({ text: phrase, color });
+        return out;
+      });
+    });
+  }
+
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.color !== undefined ? (
+          <strong key={i} style={{ color: part.color, fontWeight: 600 }}>
+            {part.text}
+          </strong>
+        ) : (
+          <span key={i}>{part.text}</span>
+        )
+      )}
+    </>
+  );
+}
 
 export default function Experience() {
   return (
@@ -258,28 +297,14 @@ export default function Experience() {
                       boxShadow:    "0 0 6px rgba(79,142,247,0.5)",
                     }}
                   />
-                  {/* Bold "Spurti" if present */}
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: bullet.replace(
-                        /Spurti/g,
-                        "<strong style=\"color:#F0F4FF;font-weight:600\">Spurti</strong>"
-                      ).replace(
-                        /MERN Stack/g,
-                        "<strong style=\"color:#4F8EF7;font-weight:600\">MERN Stack</strong>"
-                      ).replace(
-                        /React/g,
-                        "<strong style=\"color:#4F8EF7;font-weight:600\">React</strong>"
-                      ),
-                    }}
-                  />
+                  {/* Safe highlight rendering — no dangerouslySetInnerHTML */}
+                  <BulletText text={bullet} />
                 </motion.li>
               ))}
             </ul>
 
-            {/* ── Tech stack pills ── */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "20px" }}>
-              {TECH_TAGS.map((tag) => (
+              {exp.tags.map((tag) => (
                 <span
                   key={tag}
                   style={{

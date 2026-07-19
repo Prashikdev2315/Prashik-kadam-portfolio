@@ -27,7 +27,7 @@ export default function Footer() {
           margin:   0,
         }}
       >
-        Built with Next.js &amp; Vanilla CSS
+        Built with Next.js, TypeScript &amp; Framer Motion
       </p>
     </footer>
   );

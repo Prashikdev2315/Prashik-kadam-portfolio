@@ -10,7 +10,7 @@ export const personalInfo = {
   email: "kadamprashik23@gmail.com",
   github: "https://github.com/Prashikdev2315",
   linkedin: "https://linkedin.com/in/prashik-kadam",
-  resumeUrl: "/Prashik. 23BCS115.pdf",
+  resumeUrl: "/Prashik_Kadam_Resume.pdf",
   photo: "/photo.jpg",
   taglines: [
     "From raw sensor data to farmer decisions.",
@@ -133,6 +133,7 @@ export interface Experience {
   orgFull: string;
   period: string;
   bullets: string[];
+  tags: string[];
   githubLabel?: string;
   githubUrl?: string;
 }
@@ -147,6 +148,7 @@ export const experiences: Experience[] = [
       "Contributed to Spurti, an open-source ed-tech platform, using the MERN Stack",
       "Submitted pull requests for React frontend feature development on a live production codebase",
     ],
+    tags: ["MERN Stack", "React", "Node.js", "MongoDB", "Open Source"],
     githubLabel: "GitHub",
     githubUrl: "https://github.com/Prashikdev2315/spurti",
   },

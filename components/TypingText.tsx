@@ -8,9 +8,21 @@ const LINES = [
   "End-to-end AI systems. No shortcuts.",
 ];
 
+// Visually hidden — content readable by screen readers only
+const srOnly: React.CSSProperties = {
+  position:   "absolute",
+  width:      "1px",
+  height:     "1px",
+  overflow:   "hidden",
+  clip:       "rect(0 0 0 0)",
+  clipPath:   "inset(50%)",
+  whiteSpace: "nowrap",
+};
+
 export default function TypingText() {
-  const [display, setDisplay]   = useState("");
-  const [showCursor, setCursor] = useState(true);
+  const [display,      setDisplay]      = useState("");
+  const [showCursor,   setCursor]       = useState(true);
+  const [announcement, setAnnouncement] = useState(LINES[0]);
   const indexRef  = useRef(0);
   const charRef   = useRef(0);
   const phaseRef  = useRef<"type" | "hold" | "delete">("type");
@@ -26,6 +38,7 @@ export default function TypingText() {
         setDisplay(line.slice(0, charRef.current));
         if (charRef.current >= line.length) {
           phaseRef.current = "hold";
+          setAnnouncement(line);             // announce full phrase once complete
           timerRef.current = setTimeout(tick, 2200);
         } else {
           timerRef.current = setTimeout(tick, 45);
@@ -56,25 +69,33 @@ export default function TypingText() {
   }, []);
 
   return (
-    <div
-      style={{
-        fontFamily: "var(--font-mono), monospace",
-        fontSize:   "clamp(16px, 2.2vw, 22px)",
-        color:      "var(--text-muted)",
-        minHeight:  "64px",
-        lineHeight: 1.5,
-      }}
-      aria-label="Typing animation"
-    >
-      {display}
-      <span
+    <>
+      {/* Visible typing animation — hidden from assistive tech */}
+      <div
+        aria-hidden="true"
         style={{
-          color:      "var(--accent)",
-          opacity:    showCursor ? 1 : 0,
-          marginLeft: "1px",
-          fontWeight: 300,
+          fontFamily: "var(--font-mono), monospace",
+          fontSize:   "clamp(16px, 2.2vw, 22px)",
+          color:      "var(--text-muted)",
+          minHeight:  "64px",
+          lineHeight: 1.5,
         }}
-      >|</span>
-    </div>
+      >
+        {display}
+        <span
+          style={{
+            color:      "var(--accent)",
+            opacity:    showCursor ? 1 : 0,
+            marginLeft: "1px",
+            fontWeight: 300,
+          }}
+        >|</span>
+      </div>
+      {/* Screen reader region — announces the full phrase once typing completes */}
+      <span role="status" aria-live="polite" aria-atomic="true" style={srOnly}>
+        {announcement}
+      </span>
+    </>
   );
 }
+

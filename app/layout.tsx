@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Prashik Kadam — AI & ML Engineer",
   description:
-    "Portfolio of Prashik Kadam, AI & ML student at IIITDM Kurnool building end-to-end intelligent systems.",
+    "Portfolio of Prashik Kadam, AI & ML student at IIITDM Jabalpur building end-to-end intelligent systems.",
   openGraph: {
     title: "Prashik Kadam — AI & ML Engineer",
     description:
-      "Portfolio of Prashik Kadam, AI & ML student at IIITDM Kurnool building end-to-end intelligent systems.",
+      "Portfolio of Prashik Kadam, AI & ML student at IIITDM Jabalpur building end-to-end intelligent systems.",
     url: "https://prashikkadam.dev",
     siteName: "Prashik Kadam",
     images: [{ url: "/photo.jpg", width: 800, height: 800 }],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Prashik Kadam — AI & ML Engineer",
     description:
-      "Portfolio of Prashik Kadam, AI & ML student at IIITDM Kurnool.",
+      "Portfolio of Prashik Kadam, AI & ML student at IIITDM Jabalpur.",
   },
   icons: {
     icon: "/favicon.svg",
@@ -48,6 +48,33 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
+      <head>
+        {/* JSON-LD structured data — Person schema for Google Knowledge Panel */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Prashik Kadam",
+              url: "https://prashikkadam.dev",
+              email: "kadamprashik23@gmail.com",
+              image: "https://prashikkadam.dev/photo.jpg",
+              jobTitle: "AI & ML Engineer",
+              description:
+                "Final-year Computer Science student at IIITDM Jabalpur specializing in Machine Learning, Computer Vision, and applied AI systems.",
+              alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "Indian Institute of Information Technology, Design and Manufacturing Jabalpur",
+              },
+              sameAs: [
+                "https://github.com/Prashikdev2315",
+                "https://linkedin.com/in/prashik-kadam",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased">
         {/* Scroll progress bar — hydrated client-side */}
         <div id="scroll-progress" suppressHydrationWarning />
@@ -85,9 +112,19 @@ export default function RootLayout({
       ry += (my - ry) * 0.18;
       ring.style.left = rx + 'px';
       ring.style.top  = ry + 'px';
-      requestAnimationFrame(animateRing);
+      rafId = requestAnimationFrame(animateRing);
     }
+    var rafId = null;
     animateRing();
+
+    // Pause RAF loop when tab is not visible — saves battery & GPU
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+      } else if (rafId === null) {
+        animateRing();
+      }
+    });
 
     var interactables = 'a, button, [data-cursor]';
     document.addEventListener('mouseover', function(e) {

@@ -33,12 +33,12 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: none;
 }
 
-@media (pointer: coarse) {
+/* Custom cursor only for desktop mice — preserves cursor for keyboard & touch users */
+@media (hover: hover) and (pointer: fine) {
   html {
-    cursor: auto;
+    cursor: none;
   }
 }
 
@@ -148,7 +148,7 @@ body {
   transition: transform 80ms ease-out, width 150ms ease, height 150ms ease, border-color 150ms ease, opacity 150ms ease;
 }
 
-@media (pointer: coarse) {
+@media (pointer: coarse), (hover: none) {
   #cursor-dot,
   #cursor-ring {
     display: none;
@@ -375,6 +375,34 @@ body {
 ::selection {
   background: rgba(79, 142, 247, 0.3);
   color: var(--text-primary);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+/* ============================================================
+   RESPONSIVE — consolidated from component inline <style> tags
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    justify-items: center;
+  }
+  .hero-grid > div:last-child {
+    order: -1;
+  }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hidden-mobile { display: none !important; }
+  .show-mobile   { display: flex !important; }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu { display: none !important; }
 }
 
 /* ============================================================
