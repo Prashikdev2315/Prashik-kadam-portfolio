@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { personalInfo } from "@/data/portfolio";
 
-const LINES = [
-  "From raw sensor data to farmer decisions.",
-  "93% accuracy on medical imaging, built from scratch.",
-  "End-to-end AI systems. No shortcuts.",
-];
+const LINES = personalInfo.taglines;
 
 // Visually hidden — content readable by screen readers only
 const srOnly: React.CSSProperties = {

@@ -4,6 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import { GraduationCap, MapPin, Briefcase, Target, Languages } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 import GPATrendGraph from "@/components/GPATrendGraph";
+import SectionHeader from "@/components/SectionHeader";
 
 const ICONS: Record<string, React.ReactNode> = {
   GraduationCap: <GraduationCap size={16} color="var(--accent)" />,
@@ -20,10 +21,6 @@ const leftVariants: Variants = {
 const rightVariants: Variants = {
   hidden:  { opacity: 0, x: 24 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0.1 } },
-};
-const headingVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 // Splits `text` on `phrase` and wraps the phrase in a highlight span
@@ -53,34 +50,14 @@ function Highlighted({ text, phrase }: { text: string; phrase: string }) {
 
 export default function About() {
   return (
-    <section
-      id="about"
-      style={{
-        padding:   "96px 0",
-        maxWidth:  "1200px",
-        margin:    "0 auto",
-        paddingLeft:  "24px",
-        paddingRight: "24px",
-      }}
-    >
-      {/* Heading */}
-      <motion.div
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ marginBottom: "48px" }}
-      >
-        <div className="section-label">// about_me</div>
-        <h2 className="section-heading">About Me</h2>
-        <div className="section-divider" />
-      </motion.div>
+    <section id="about" className="section">
+      <SectionHeader label="// about_me" title="About Me" />
 
       {/* Two-column layout */}
       <div className="about-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "60% 40%",
+          gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
           gap: "48px",
           alignItems: "start",
         }}
@@ -97,9 +74,10 @@ export default function About() {
             <p
               key={i}
               style={{
-                fontSize:   "15px",
-                color:      "var(--text-muted)",
-                lineHeight: 1.8,
+                fontSize:   i === 0 ? "var(--step-1)" : "var(--step-0)",
+                color:      i === 0 ? "var(--text-primary)" : "var(--text-muted)",
+                lineHeight: 1.75,
+                maxWidth:   "62ch",
                 margin:     0,
               }}
             >

@@ -1,35 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { skillGroups } from "@/data/portfolio";
-
-const headingVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+import SectionHeader from "./SectionHeader";
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      style={{
-        padding:     "96px 24px",
-        maxWidth:    "1200px",
-        margin:      "0 auto",
-      }}
-    >
-      {/* Heading */}
-      <motion.div
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ marginBottom: "48px" }}
-      >
-        <div className="section-label">// tech_stack</div>
-        <h2 className="section-heading">Skills</h2>
-        <div className="section-divider" />
-      </motion.div>
+    <section id="skills" className="section">
+      <SectionHeader label="// tech_stack" title="Skills" />
 
       {/* Skill groups */}
       <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>

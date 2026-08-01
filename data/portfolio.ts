@@ -18,8 +18,8 @@ export const personalInfo = {
     "End-to-end AI systems. No shortcuts.",
   ],
   aboutParagraphs: [
-    "Final-year Computer Science undergraduate at IIITDM Jabalpur, specialising in Machine Learning, Computer Vision, and AI-driven system development. I ship end-to-end intelligent systems — from model development and explainability to Flask-based deployment — across domains like healthcare imaging, IoT agriculture, and cheminformatics.",
-    "Contributor to two patent-filed innovations in healthcare and agri-tech. GATE CSE 2025 qualified. Selected among top 38 out of 193 teams at Smart India Hackathon 2025. I care about building AI that is interpretable, deployable, and genuinely useful.",
+    "I build machine learning systems that make it out of the notebook. My work spans medical imaging, IoT agriculture, and cheminformatics — and in each case the goal was the same: a model someone can actually run, with output they can actually trust.",
+    "That means pairing a 93%-accuracy CNN with Grad-CAM++ so a radiologist can see what it looked at, or wiring live ESP32 soil sensors to a Flutter app in nine Indian languages so the farmer reading it isn't forced into English. Contributor to two patent-filed innovations, GATE CSE 2025 qualified, and top 38 of 193 teams at Smart India Hackathon 2025.",
   ],
   quickFacts: [
     { label: "B.Tech — IIITDM Jabalpur", icon: "GraduationCap" },
@@ -29,14 +29,15 @@ export const personalInfo = {
     { label: "Japanese 日本語 · Conversational (Level 2)", icon: "Languages" },
   ],
   heroStats: [
-    { label: "3 AI Projects" },
-    { label: "93% Accuracy" },
-    { label: "9 Languages Supported" },
+    { label: "93% imaging accuracy" },
+    { label: "2 patents filed" },
+    { label: "9 languages shipped" },
   ],
 };
 
 export interface Project {
   title: string;
+  tagline: string;
   description: string;
   bullets: string[];
   tags: string[];
@@ -47,47 +48,50 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Kisan Saathi — IoT Smart Agriculture App",
+    title: "Kisan Saathi",
+    tagline: "IoT + LLM advisory for Indian farmers",
     description:
-      "A Flutter mobile app helping Indian farmers monitor soil health via ESP32 IoT sensors and AI-driven fertiliser recommendations.",
+      "Soil-health guidance most Indian farmers can't get: live ESP32 sensor readings turned into plain-language fertiliser advice, delivered in the language they actually speak.",
     bullets: [
-      "Live ESP32 sensor data (N, P, K, pH, EC, ORP) via Firebase RTDB",
-      "Two-phase field analysis — soil prep and flooded-field ORP monitoring",
-      "AI fertiliser recommendations using Llama 3.1 via Groq API",
-      "Multilingual UI across 9 Indian languages with real-time switching",
+      "Streams six live soil metrics (N, P, K, pH, EC, ORP) from ESP32 hardware through Firebase RTDB",
+      "Models two real field stages — dry soil prep and flooded-field ORP monitoring",
+      "Converts raw readings into actionable fertiliser advice via Llama 3.1 on Groq",
+      "Ships in 9 Indian languages with runtime switching, so the UI never forces English",
     ],
     tags: ["Flutter", "Firebase RTDB", "ESP32", "Llama 3.1", "Python"],
-    github: "https://github.com/Prashikdev2315/kisan_saathi",
+    github: "https://github.com/Prashikdev2315/KrishiLink",
     featured: true,
     icon: "Sprout",
   },
   {
-    title: "AI Driven Osteoporosis Detection",
+    title: "Osteoporosis Detection",
+    tagline: "93% accuracy with explainable output",
     description:
-      "ML pipelines for medical image classification to detect osteoporosis from X-ray images with explainable AI.",
+      "A CNN that flags osteoporosis in X-rays at 93% accuracy — and shows the radiologist exactly which region drove the call, because an unexplained diagnosis is not a usable one.",
     bullets: [
-      "Expanded dataset to 8,000+ images via preprocessing & augmentation",
-      "Achieved 93% accuracy with optimized CNN architecture",
-      "Grad-CAM++ for model interpretability and explainability",
-      "Focused on healthcare-grade explainable AI output",
+      "Grew a limited clinical dataset to 8,000+ images through targeted preprocessing and augmentation",
+      "Tuned a CNN architecture to 93% classification accuracy",
+      "Layered Grad-CAM++ heatmaps over predictions to expose the model's actual attention",
+      "Built for the healthcare bar: every prediction ships with visual justification",
     ],
     tags: ["Python", "TensorFlow", "CNN", "Grad-CAM++", "Medical Imaging"],
-    github: "https://github.com/Prashikdev2315/osteoporosis-detection",
+    github: "https://github.com/Prashikdev2315/Osteoporosis-Detection",
     featured: true,
     icon: "ScanLine",
   },
   {
-    title: "Drug Side Effect Prediction Using AI",
+    title: "Drug Side Effect Prediction",
+    tagline: "Multi-label prediction from molecular structure",
     description:
-      "Intelligent system predicting potential drug side effects using molecular fingerprints and multi-label ML models.",
+      "Predicts likely side effects straight from a molecule's structure, letting researchers screen compounds computationally before committing to lab time.",
     bullets: [
-      "Analyzed data from 1,100+ drugs across 20+ side-effect categories",
-      "Converted SMILES strings to ECFP molecular fingerprints",
-      "Built multi-label classifiers evaluated on macro & micro F1-scores",
-      "Delivered insights via an interactive prediction interface",
+      "Trained across 1,100+ drugs spanning 20+ side-effect categories",
+      "Encoded SMILES strings as ECFP molecular fingerprints via RDKit",
+      "Handled true multi-label output, scored on macro and micro F1 rather than raw accuracy",
+      "Wrapped the model in an interactive interface for querying unseen compounds",
     ],
     tags: ["Python", "Scikit-learn", "RDKit", "Multi-label Classification"],
-    github: "https://github.com/Prashikdev2315/drug-side-effects",
+    github: "https://github.com/Prashikdev2315/Drug-Side-effect-Predictor",
     featured: true,
     icon: "FlaskConical",
   },
@@ -130,7 +134,7 @@ export const skillGroups: SkillGroup[] = [
 export interface Experience {
   role: string;
   org: string;
-  orgFull: string;
+  orgSub: string;
   period: string;
   bullets: string[];
   tags: string[];
@@ -142,14 +146,14 @@ export const experiences: Experience[] = [
   {
     role: "Software Engineering Intern",
     org: "IIT Ropar — VLED Lab",
-    orgFull: "Indian Institute of Technology Ropar, Vicharanashala Lab for Education Design (VLED Lab)",
+    orgSub: "Vicharanashala Lab for Education Design",
     period: "May 2026 – July 2026",
     bullets: [
-      "Contributed to Spurti, an open-source ed-tech platform, using the MERN Stack",
-      "Submitted pull requests for React frontend feature development on a live production codebase",
+      "Built React frontend features for Spurti, an open-source ed-tech platform serving live users",
+      "Worked the real open-source loop on a MERN codebase — pull requests, code review, merge",
     ],
     tags: ["MERN Stack", "React", "Node.js", "MongoDB", "Open Source"],
-    githubLabel: "GitHub",
+    githubLabel: "View the repo",
     githubUrl: "https://github.com/Prashikdev2315/spurti",
   },
 ];

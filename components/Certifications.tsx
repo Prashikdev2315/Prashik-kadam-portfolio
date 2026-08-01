@@ -1,35 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { certifications } from "@/data/portfolio";
-
-const headingVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+import SectionHeader from "./SectionHeader";
 
 export default function Certifications() {
   return (
-    <section
-      id="certifications"
-      style={{
-        padding:  "96px 24px",
-        maxWidth: "1200px",
-        margin:   "0 auto",
-      }}
-    >
-      {/* Heading */}
-      <motion.div
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ marginBottom: "48px" }}
-      >
-        <div className="section-label">// achievements</div>
-        <h2 className="section-heading">Certifications & Hackathons</h2>
-        <div className="section-divider" />
-      </motion.div>
+    <section id="certifications" className="section">
+      <SectionHeader label="// achievements" title="Certifications & Recognition" />
 
       {/* Timeline list */}
       <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -66,8 +44,8 @@ export default function Certifications() {
               <div>
                 <div
                   style={{
-                    fontSize:   "14px",
-                    fontWeight: 500,
+                    fontSize:   "var(--step-0)",
+                    fontWeight: 600,
                     color:      "var(--text-primary)",
                     marginBottom: "4px",
                   }}
@@ -84,7 +62,7 @@ export default function Certifications() {
                 >
                   {cert.org}
                 </div>
-                <div style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+                <div style={{ fontSize: "var(--step--1)", color: "var(--text-muted)", lineHeight: 1.6 }}>
                   {cert.note}
                 </div>
               </div>

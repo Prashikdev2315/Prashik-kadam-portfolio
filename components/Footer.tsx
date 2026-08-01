@@ -1,13 +1,18 @@
+import { personalInfo } from "@/data/portfolio";
+
 export default function Footer() {
   return (
     <footer
       style={{
-        borderTop:  "1px solid rgba(255,255,255,0.05)",
-        padding:    "32px 24px",
-        textAlign:  "center",
-        display:    "flex",
-        flexDirection: "column",
-        gap:        "8px",
+        borderTop:      "1px solid rgba(255,255,255,0.05)",
+        padding:        "32px var(--gutter)",
+        display:        "flex",
+        flexWrap:       "wrap",
+        gap:            "12px",
+        alignItems:     "center",
+        justifyContent: "space-between",
+        maxWidth:       "1200px",
+        margin:         "0 auto",
       }}
     >
       <p
@@ -18,16 +23,17 @@ export default function Footer() {
           margin:     0,
         }}
       >
-        Designed &amp; built by Prashik Kadam · 2027
+        Designed &amp; built by {personalInfo.name}
       </p>
       <p
         style={{
-          fontSize: "11px",
-          color:    "#555",
-          margin:   0,
+          fontFamily: "var(--font-mono), monospace",
+          fontSize:   "12px",
+          color:      "var(--text-subtle)",
+          margin:     0,
         }}
       >
-        Built with Next.js, TypeScript &amp; Framer Motion
+        Next.js · TypeScript · Framer Motion
       </p>
     </footer>
   );

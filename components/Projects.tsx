@@ -3,40 +3,26 @@
 import { motion, type Variants } from "framer-motion";
 import { projects } from "@/data/portfolio";
 import ProjectCard from "./ProjectCard";
+import SectionHeader from "./SectionHeader";
 
-const headingVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+const cardVariants: Variants = {
+  hidden:  { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      style={{
-        padding:     "96px 24px",
-        maxWidth:    "1200px",
-        margin:      "0 auto",
-      }}
-    >
-      {/* Heading */}
-      <motion.div
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ marginBottom: "48px" }}
-      >
-        <div className="section-label">// projects</div>
-        <h2 className="section-heading">Featured Projects</h2>
-        <div className="section-divider" />
-      </motion.div>
+    <section id="projects" className="section">
+      <SectionHeader
+        label="// projects"
+        title="Featured Projects"
+        intro="Three systems taken from problem statement to something runnable."
+      />
 
-      {/* Grid — equal height cards */}
       <div
         style={{
           display:             "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
           gap:                 "24px",
           alignItems:          "stretch",
         }}
@@ -44,13 +30,14 @@ export default function Projects() {
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 32, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: index * 0.08 }}
             style={{ display: "flex" }}
           >
-            <ProjectCard project={project} index={index} />
+            <ProjectCard project={project} />
           </motion.div>
         ))}
       </div>

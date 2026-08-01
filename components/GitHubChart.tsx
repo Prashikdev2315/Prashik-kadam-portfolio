@@ -1,40 +1,20 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { personalInfo } from "@/data/portfolio";
+import SectionHeader from "./SectionHeader";
 
-// Extract just the username from the github URL, e.g. "Prashikdev2315"
 const GITHUB_USERNAME = personalInfo.github.replace("https://github.com/", "").replace(/\/$/, "");
-
-// ghchart.rshah.org returns a live contribution SVG — auto-updates daily, no token needed
-const CHART_URL = `https://ghchart.rshah.org/${GITHUB_USERNAME}`;
-
-const headingVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+const CHART_URL = `https://ghchart.rshah.org/4F8EF7/${GITHUB_USERNAME}`;
 
 export default function GitHubChart() {
   return (
     <section
       id="github"
-      style={{
-        padding:  "0 24px 80px",
-        maxWidth: "1200px",
-        margin:   "0 auto",
-      }}
+      className="section"
+      style={{ paddingBlockStart: 0 }}
     >
-      <motion.div
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ marginBottom: "32px" }}
-      >
-        <div className="section-label">// activity</div>
-        <h2 className="section-heading">GitHub Contributions</h2>
-        <div className="section-divider" />
-      </motion.div>
+      <SectionHeader label="// activity" title="GitHub Contributions" />
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -78,16 +58,11 @@ export default function GitHubChart() {
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            data-cursor
+            className="text-link"
             style={{
-              fontFamily:     "var(--font-mono), monospace",
-              fontSize:       "12px",
-              color:          "var(--accent)",
-              textDecoration: "none",
-              transition:     "opacity 150ms ease",
+              fontFamily: "var(--font-mono), monospace",
+              fontSize:   "12px",
             }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.75"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
           >
             View Profile →
           </a>
@@ -98,14 +73,12 @@ export default function GitHubChart() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={CHART_URL}
-          alt={`${GITHUB_USERNAME}'s GitHub contribution chart`}
+          alt={`GitHub contribution graph for @${GITHUB_USERNAME}`}
           style={{
-            width:     "100%",
-            minWidth:  "600px",
-            height:    "auto",
-            display:   "block",
-            filter:    "hue-rotate(200deg) saturate(1.4) brightness(1.1)",
-            opacity:   0.9,
+            width:    "100%",
+            minWidth: "600px",
+            height:   "auto",
+            display:  "block",
           }}
           loading="lazy"
         />
