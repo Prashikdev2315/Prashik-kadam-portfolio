@@ -21,12 +21,14 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        position:   "relative",
-        minHeight:  "100svh",
-        display:    "flex",
-        alignItems: "center",
-        overflow:   "hidden",
-        paddingTop: "var(--nav-h)",
+        position:        "relative",
+        minHeight:       "100svh",
+        display:         "flex",
+        flexDirection:   "column",
+        justifyContent:  "center",
+        alignItems:      "stretch",
+        overflow:        "hidden",
+        paddingTop:      "var(--nav-h)",
       }}
     >
       {/* Dot-grid background */}

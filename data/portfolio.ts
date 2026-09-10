@@ -19,7 +19,7 @@ export const personalInfo = {
   ],
   aboutParagraphs: [
     "I build machine learning systems that make it out of the notebook. My work spans medical imaging, IoT agriculture, and cheminformatics — and in each case the goal was the same: a model someone can actually run, with output they can actually trust.",
-    "That means pairing a 93%-accuracy CNN with Grad-CAM++ so a radiologist can see what it looked at, or wiring live ESP32 soil sensors to a Flutter app in nine Indian languages so the farmer reading it isn't forced into English. Contributor to two patent-filed innovations, GATE CSE 2025 qualified, and top 38 of 193 teams at Smart India Hackathon 2025.",
+    "That means pairing a 93%-accuracy CNN with Grad-CAM++ so a radiologist can see what it looked at, or wiring live ESP32 soil sensors to a Flutter app in nine Indian languages so the farmer reading it isn't forced into English. Published patent IN202621081530 A1 (Vision-Guided Robotic Welding System) and a second patent pending (Semi-Automatic Paddy Transplanter), GATE CSE 2025 qualified, and top 38 of 193 teams at Smart India Hackathon 2025.",
   ],
   quickFacts: [
     { label: "B.Tech — IIITDM Jabalpur", icon: "GraduationCap" },
@@ -30,7 +30,7 @@ export const personalInfo = {
   ],
   heroStats: [
     { label: "93% imaging accuracy" },
-    { label: "2 patents filed" },
+    { label: "1 patent published · 1 filed" },
     { label: "9 languages shipped" },
   ],
 };
@@ -48,7 +48,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Kisan Saathi",
+    title: "KrishiLink",
     tagline: "IoT + LLM advisory for Indian farmers",
     description:
       "Soil-health guidance most Indian farmers can't get: live ESP32 sensor readings turned into plain-language fertiliser advice, delivered in the language they actually speak.",
@@ -64,23 +64,23 @@ export const projects: Project[] = [
     icon: "Sprout",
   },
   {
-    title: "Osteoporosis Detection",
-    tagline: "93% accuracy with explainable output",
+    title: "BharatDrishti — India's Eye",
+    tagline: "Sovereign satellite change detection with AI",
     description:
-      "A CNN that flags osteoporosis in X-rays at 93% accuracy — and shows the radiologist exactly which region drove the call, because an unexplained diagnosis is not a usable one.",
+      "End-to-end geospatial intelligence platform that detects land-cover changes across Indian regions using Sentinel-2 bi-temporal imagery and a Siamese Transformer (ChangeFormerV6) — fully offline for demos, live CDSE data in production.",
     bullets: [
-      "Grew a limited clinical dataset to 8,000+ images through targeted preprocessing and augmentation",
-      "Tuned a CNN architecture to 93% classification accuracy",
-      "Layered Grad-CAM++ heatmaps over predictions to expose the model's actual attention",
-      "Built for the healthcare bar: every prediction ships with visual justification",
+      "Runs ChangeFormerV6 (41 M-param Siamese Transformer, 94.95% LEVIR-CD accuracy) for bi-temporal change detection",
+      "Produces per-pixel heatmaps, binary masks, NDVI diff maps, and GeoJSON polygons with confidence scores",
+      "Classifies detected zones into construction, vegetation loss/gain, water body change, and general change categories",
+      "FastAPI backend with lazy model singleton + React/Leaflet frontend with before/after compare slider and AI analysis panel",
     ],
-    tags: ["Python", "TensorFlow", "CNN", "Grad-CAM++", "Medical Imaging"],
-    github: "https://github.com/Prashikdev2315/Osteoporosis-Detection",
+    tags: ["Python", "FastAPI", "ChangeFormerV6", "Sentinel-2", "React", "Leaflet"],
+    github: "https://github.com/Prashikdev2315/BharatDrishti-India-s-Eye-",
     featured: true,
-    icon: "ScanLine",
+    icon: "Satellite",
   },
   {
-    title: "Drug Side Effect Prediction",
+    title: "Drug Side Effect Detection",
     tagline: "Multi-label prediction from molecular structure",
     description:
       "Predicts likely side effects straight from a molecule's structure, letting researchers screen compounds computationally before committing to lab time.",
@@ -156,6 +156,16 @@ export const experiences: Experience[] = [
     githubLabel: "View the repo",
     githubUrl: "https://github.com/Prashikdev2315/spurti",
   },
+  {
+    role: "Web Developer",
+    org: "PDPM IIITDM Jabalpur",
+    orgSub: "Fusion ERP — Institute Portal",
+    period: "Jan 2026 – April 2026",
+    bullets: [
+      "Architected the Healthcare Management Module for IIITDM Jabalpur's ERP portal, covering full-stack workflows, technical documentation, and API specs for institute-wide rollout",
+    ],
+    tags: ["Full-Stack", "ERP", "REST API", "Technical Documentation"],
+  },
 ];
 
 export interface Certification {
@@ -166,6 +176,18 @@ export interface Certification {
 }
 
 export const certifications: Certification[] = [
+  {
+    title: "Patent Published — IN202621081530 A1: Vision-Guided Robotic Welding System",
+    org: "Intellectual Property India / PDPM IIITDM Jabalpur",
+    note: "Granted patent for a vision-guided robotic welding system developed at IIITDM Jabalpur",
+    year: "2026",
+  },
+  {
+    title: "Patent Filed — Semi-Automatic Paddy Transplanter (Under Processing)",
+    org: "Intellectual Property India / IIITDM Jabalpur",
+    note: "Patent application filed for a semi-automatic paddy transplanter; currently under processing",
+    year: "2026",
+  },
   {
     title: "GATE 2025 Qualified — Computer Science Engineering",
     org: "IIT Roorkee / Ministry of Education, Govt. of India",

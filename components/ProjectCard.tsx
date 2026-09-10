@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowUpRight, Sprout, ScanLine, FlaskConical } from "lucide-react";
+import { ArrowUpRight, Sprout, ScanLine, FlaskConical, Satellite } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 
 const ICONS: Record<string, React.ReactNode> = {
   Sprout:       <Sprout       size={20} color="var(--accent)" />,
   ScanLine:     <ScanLine     size={20} color="var(--accent)" />,
   FlaskConical: <FlaskConical size={20} color="var(--accent)" />,
+  Satellite:    <Satellite    size={20} color="var(--accent)" />,
 };
 
 export default function ProjectCard({ project }: { project: Project }) {

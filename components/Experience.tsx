@@ -14,8 +14,9 @@ export default function Experience() {
     <section id="experience" className="section">
       <SectionHeader label="// work" title="Experience" />
 
-      {experiences.map((exp) => (
-        <motion.article
+      <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+        {experiences.map((exp) => (
+          <motion.article
           key={exp.org + exp.period}
           className="card"
           variants={cardVariants}
@@ -158,7 +159,8 @@ export default function Experience() {
             </a>
           )}
         </motion.article>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }
