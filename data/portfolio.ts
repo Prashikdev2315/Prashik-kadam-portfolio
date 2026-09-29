@@ -9,7 +9,7 @@ export const personalInfo = {
   location: "Pune, Maharashtra",
   email: "kadamprashik23@gmail.com",
   github: "https://github.com/Prashikdev2315",
-  linkedin: "https://linkedin.com/in/prashik-kadam",
+  linkedin: "https://www.linkedin.com/in/prashik-kadam-a489a8285/",
   resumeUrl: "/Prashik_Kadam_Resume.pdf",
   photo: "/photo.jpg",
   taglines: [
